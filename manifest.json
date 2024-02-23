@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "Hello Extensions of the world!",
+  "description": "Base Level Extension",
+  "version": "1.0",
+  "permissions": ["storage", "tabs", "activeTab", "identity", "scripting"],
+	"host_permissions": [
+		"http://localhost:5174/*"
+	],
+  "action": {
+    "default_popup": "hello.html",
+    "default_icon": "hello_extensions.png"
+  },
+	"background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "js": ["popup.js"],
+      "matches": ["https://www.youtube.com/*", "*://lo-player.netlify.app/*", "*://localhost/*"],
+			"match_origin_as_fallback": false
+    }
+  ]
+}
